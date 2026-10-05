@@ -23,12 +23,12 @@ Không cần API key, không cần tự chuẩn bị dữ liệu: notebook tự 
 
 1. Bấm nút **Open in Colab** ở trên, rồi `File → Save a copy in Drive` để có bản của riêng bạn.
    (Nếu nút không mở được, tải file `.ipynb` về và dùng `File → Upload notebook` trên [Colab](https://colab.research.google.com).)
-2. `Runtime → Change runtime type → T4 GPU`.
+2. `Runtime → Change runtime type → GPU`. Notebook dùng bất kỳ GPU CUDA nào Colab cấp; không phụ thuộc riêng T4.
 3. Chạy lần lượt 5 ô của **Phần 0**. Ô thứ tư tải toàn bộ weights và dataset; hãy chạy nó trong giờ nghỉ.
 4. Làm từ Phần 1 đến Phần 4 theo thứ tự. Các phần sau dùng lại hàm bạn viết ở phần trước.
 
-Notebook cố định `ultralytics==8.4.171`. Không có GPU thì notebook vẫn chạy, nhưng Phần 4 tự giảm xuống 3 epoch và kết quả
-fine-tune sẽ không dùng được để nộp.
+Notebook cố định `ultralytics==8.4.171`. Phần 4 yêu cầu GPU CUDA của Colab (bất kỳ loại GPU nào); nếu runtime không có GPU,
+notebook sẽ dừng rõ ràng trước khi fine-tune để tránh tạo kết quả CPU không đủ điều kiện nộp.
 
 ---
 
@@ -141,7 +141,7 @@ Xem [`rubric.md`](rubric.md) (100 điểm lõi + 20 bonus).
 
 | Hiện tượng | Cách xử lý |
 |---|---|
-| `⚠️ Không thấy GPU` ở Phần 0 | `Runtime → Change runtime type → T4 GPU`, rồi chạy lại từ đầu. |
+| `⚠️ Không thấy GPU` ở Phần 0 | `Runtime → Change runtime type → GPU`, rồi chạy lại từ đầu. |
 | `⛔ Mục 1B chưa xong: ...` | Đây là ô chốt, không phải lỗi hệ thống. Kéo lên ô TODO, đọc dòng ❌, mở 💡 gợi ý. Hết giờ thì dùng phao. |
 | `❌ ... — còn 2 chỗ ... chưa điền` | Hàm vẫn còn dấu `...`. Điền hết rồi chạy lại chính ô đó. |
 | Sửa code rồi mà vẫn ❌ | Bạn phải **chạy lại ô TODO** (Shift + Enter) thì hàm mới được định nghĩa lại. |
